@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.chuang.rbac2.rest.Rbac2RestAutoConfiguration

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rbac2-crud-starter" />
+        <module name="rbac2-rest-api" />
+        <module name="rbac2-rest-api-starter" />
+        <module name="rbac2-crud" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rbac2-controller" target="8" />
+      <module name="rbac2-controller-starter" target="1.8" />
+      <module name="rbac2-service" target="8" />
+      <module name="rbac2-service-starter" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="rbac2-controller" options="-parameters" />
+      <module name="rbac2-controller-starter" options="-parameters" />
+      <module name="rbac2-crud" options="-parameters" />
+      <module name="rbac2-crud-starter" options="-parameters" />
+      <module name="rbac2-rest-api" options="-parameters" />
+      <module name="rbac2-rest-api-starter" options="-parameters" />
+      <module name="rbac2-service" options="-parameters" />
+      <module name="rbac2-service-starter" options="-parameters" />
+    </option>
+  </component>
+</project>

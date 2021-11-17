@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.chuang.rbac2.crud.Rbac2AutoConfiguration
