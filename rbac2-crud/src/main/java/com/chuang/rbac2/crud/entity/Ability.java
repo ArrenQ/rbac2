@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("SYS_ABILITY")
+@TableName("sys_ability")
 public class Ability implements TreeModel, Serializable {
 
     private static final long serialVersionUID=1L;
