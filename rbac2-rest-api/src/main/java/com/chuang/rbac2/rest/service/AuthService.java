@@ -10,6 +10,7 @@ import com.chuang.rbac2.crud.enums.Language;
 import com.chuang.rbac2.crud.enums.UserStatus;
 import com.chuang.rbac2.crud.service.*;
 import com.chuang.rbac2.rest.OfficeUtils;
+import com.chuang.rbac2.rest.model.LoggedEvent;
 import com.chuang.rbac2.rest.model.ShiroUser;
 import com.chuang.tauceti.shiro.spring.web.jwt.realm.IShiroService;
 import com.chuang.tauceti.shiro.spring.web.jwt.realm.LoginToken;
@@ -18,6 +19,7 @@ import com.chuang.tauceti.support.ThreeValue;
 import com.chuang.tauceti.support.exception.BusinessException;
 import com.chuang.tauceti.tools.basic.reflect.BeanKit;
 import com.chuang.tauceti.tools.basic.reflect.ConvertKit;
+import com.chuang.tauceti.tools.third.servlet.HttpKit;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -28,6 +30,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.codec.Hex;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Nullable;
@@ -50,6 +53,7 @@ public class AuthService implements IAuthService, IShiroService {
     @Resource private IUserInfoService userInfoService;
     @Resource private IRoleService roleService;
     @Resource private IAbilityService abilityService;
+    @Resource private ApplicationContext applicationContext;
 
     @Override
     public Optional<String> createUser(String username, String name, @Nullable String ipBound, @Nullable String macBound) {
@@ -182,6 +186,7 @@ public class AuthService implements IAuthService, IShiroService {
         ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         BeanKit.copyProperties(info, user);
 
+        applicationContext.publishEvent(new LoggedEvent(user.getUsername(), user.getUsername(), HttpKit.getIpAddress().orElse("0.0.0.0")));
 
 //        List<Role> roles = roleService.findAllRoles(user.getUsername());
 //

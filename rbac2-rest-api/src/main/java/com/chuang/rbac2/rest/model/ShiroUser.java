@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ApiModel(description = "用户信息")
-public class ShiroUser {
+public class ShiroUser implements Principal {
 
     @ApiModelProperty("账号")
     private String username;
